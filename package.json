@@ -1,0 +1,16 @@
+{
+  "name": "immodev-pdf-generator",
+  "version": "1.0.0",
+  "description": "Generate PDF flyers from real estate listing URLs for Immodev",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "puppeteer": "^22.0.0",
+    "pdfkit": "^0.14.0",
+    "axios": "^1.6.0",
+    "sharp": "^0.33.0"
+  }
+}

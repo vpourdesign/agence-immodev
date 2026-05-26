@@ -1,0 +1,16 @@
+node_modules/
+output/
+.env
+*.png
+*.jpg
+*.svg
+!logo-blanc.png
+!logo-blanc.svg
+!logo-noir.svg
+!bandes.png
+!cover.jpg
+!cover2.jpg
+stitch-assets/
+real-estate-template.pdf
+Screenshot*
+Crystal-*
