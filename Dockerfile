@@ -34,6 +34,6 @@ COPY . .
 
 RUN mkdir -p output
 
-EXPOSE 3005
+EXPOSE ${PORT:-3005}
 
 CMD ["node", "server.js"]
