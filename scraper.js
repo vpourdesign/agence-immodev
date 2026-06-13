@@ -222,15 +222,11 @@ async function scrapeListing(url) {
       if (m.brokers && m.brokers.length > 0) {
         for (const b of m.brokers) {
           const name = `${b.first_name || ''} ${b.last_name || ''}`.trim();
-          const title = b.title || b.license_type_code || '';
+          const title = b.license_type || b.title || b.license_type_code || '';
           const phone = (b.phones && (b.phones.mobile || b.phones.office || b.phones.home)) || '';
           const email = b.email || '';
           const photoUrl = b.photo_url || '';
-          const corporation = b.corporation || b.company || b.agency || b.corporation_name || '';
-
-          // Debug: log all broker keys to find full title field
-          console.log('Broker keys:', JSON.stringify(Object.keys(b)));
-          console.log('Broker title:', b.title, '| license_type:', b.license_type, '| license_type_code:', b.license_type_code);
+          const corporation = b.company_name || b.corporation || b.company || '';
 
           if (name) {
             brokers.push({ name, title, phone, email, photoUrl, corporation });
