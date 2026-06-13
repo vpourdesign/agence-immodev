@@ -19,6 +19,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/output', express.static(OUTPUT_DIR));
 app.use('/assets', express.static(__dirname));
 
+// Block search engine indexing
+app.get('/robots.txt', (req, res) => {
+  res.type('text/plain').send('User-agent: *\nDisallow: /\n');
+});
+
 // Simple HTML form
 app.get('/', (req, res) => {
   res.send(`<!DOCTYPE html>
@@ -26,6 +31,7 @@ app.get('/', (req, res) => {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
   <title>Immodev — Générateur PDF</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
   <style>
@@ -312,6 +318,7 @@ app.get('/dashboard', (req, res) => {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
   <title>Immodev — Tableau de bord</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet">
