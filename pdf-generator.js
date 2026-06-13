@@ -295,8 +295,8 @@ function generateCoverHTML(data, logoBase64, lang) {
           <div style="display:flex; flex-direction:column; gap:${brokerCount >= 3 ? '10' : '16'}px; padding-top:4px;">
             <div style="display:flex; flex-direction:column; gap:4px;">
               <h2 class="font-headline" style="font-size:${nameSize}px; font-weight:700; color:white; letter-spacing:-0.02em; text-transform:uppercase;">${escapeHTML(bName)}</h2>
-              ${bTitle ? `<p class="font-label" style="font-size:${titleSize}px; letter-spacing:0.05em; color:rgba(255,255,255,0.6); line-height:1.3; margin-top:2px;">${escapeHTML(bTitle)}</p>` : ''}
-              ${bCorp ? `<p class="font-label" style="font-size:${corpSize}px; letter-spacing:0.12em; color:rgba(255,255,255,0.35); text-transform:uppercase; margin-top:4px;">${escapeHTML(bCorp)}</p>` : ''}
+              ${bTitle ? `<p class="font-label" style="font-size:${titleSize}px; letter-spacing:0.05em; color:rgba(255,255,255,0.85); line-height:1.3; margin-top:2px;">${escapeHTML(bTitle)}</p>` : ''}
+              ${bCorp ? `<p class="font-label" style="font-size:${corpSize}px; letter-spacing:0.12em; color:rgba(255,255,255,0.5); text-transform:uppercase; margin-top:4px;">${escapeHTML(bCorp)}</p>` : ''}
             </div>
             <div style="display:flex; flex-direction:column; gap:6px;">
               ${bPhone ? `
