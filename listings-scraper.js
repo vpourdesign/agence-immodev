@@ -50,10 +50,27 @@ async function scrapeAllListings() {
 
     console.log(`Found ${Object.keys(brokerMap).length} unique brokers`);
 
-    // Second: scrape the listings page
+    // Second: scrape the listings page — scroll to load all
     console.log('Scraping listings page...');
     await page.goto('https://www.immodev.ca/nos-proprietes/', { waitUntil: 'networkidle2', timeout: 30000 });
     await new Promise(r => setTimeout(r, 3000));
+
+    // Scroll + click "Charger plus" to load all listings
+    let prevCount = 0;
+    for (let i = 0; i < 30; i++) {
+      await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+      await new Promise(r => setTimeout(r, 1500));
+      await page.evaluate(() => {
+        const btn = document.querySelector('[ng-click*=showNextPage]');
+        if (btn && btn.offsetParent !== null && getComputedStyle(btn).display !== 'none') btn.click();
+      });
+      await new Promise(r => setTimeout(r, 1500));
+      const count = await page.evaluate(() => document.querySelectorAll('.si-listing-item').length);
+      console.log(`  Loaded ${count} listings...`);
+      if (count === prevCount) break;
+      prevCount = count;
+    }
+    console.log(`All listings loaded: ${prevCount}`);
 
     const listings = await page.evaluate((brokerLookup) => {
       const items = document.querySelectorAll('.si-listing-item');

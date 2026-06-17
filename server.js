@@ -646,10 +646,9 @@ app.get('/dashboard', (req, res) => {
         // Populate broker filter
         const select = document.getElementById('brokerFilter');
         const currentVal = select.value;
-        select.innerHTML = '<option value="">Tous les courtiers (' + allListings.length + ')</option>';
+        select.innerHTML = '<option value="">Tous les courtiers</option>';
         allBrokers.forEach(b => {
-          const count = allListings.filter(l => l.brokers.some(lb => lb.id === b.id)).length;
-          select.innerHTML += '<option value="' + b.id + '">' + b.name + ' (' + count + ')</option>';
+          select.innerHTML += '<option value="' + b.id + '">' + b.name + '</option>';
         });
         select.value = currentVal;
 
